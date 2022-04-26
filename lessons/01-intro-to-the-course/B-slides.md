@@ -1,9 +1,7 @@
-## Kotlin, the language
+## Slides from the Workshop
 
-<iframe src="../../slides/index.html" width="100%" height="500"></iframe>
+[Download the PDF version](intro-flutter/slides/slides.pdf)
 
-[PDF version](intro-kotlin/slides/slides.pdf)
+## Dart Language guide
 
-## Language guide
-
-[Kotlin docs](https://kotlinlang.org/docs/home.html)
+[Dart docs](https://dart.dev/samples)

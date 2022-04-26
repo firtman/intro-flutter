@@ -1,0 +1,1 @@
+To follow the Dart 101 section of this course, [download the companion assets]((/intro-flutter/assets.zip) and open the folder `dart101` in Android Studio or Visual Studio Code. You will find a series of `dart` files.
