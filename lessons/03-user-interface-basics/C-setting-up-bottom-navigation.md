@@ -1,4 +1,4 @@
-# Setting the Theme
+##Setting the Theme
 
 Open the file at `main.dart` and let's update the app's name, and also the theme's color. We will use `Colors.brown`. To see all the colors available in Material, check the [Material Color website](https://material.io/resources/color/) or [Material Palette](https://www.materialpalette.com/).
 
@@ -10,7 +10,7 @@ AppBar(
     ),
 ```
 
-# Creating the Bottom Bar
+##Creating the Bottom Bar
 
 In the HomePage widget, add a `bottomNavigationBar` to the `Scaffold` widget and define the following code:
 

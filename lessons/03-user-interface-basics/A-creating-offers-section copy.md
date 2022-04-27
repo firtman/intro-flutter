@@ -1,8 +1,8 @@
-## Assets
+###Assets
 
 We are going to use several images from the assets.zip file you downloaded from assets. Create an `images` subfolder in your project and copy all the files within assets.
 
-## OfferPage
+###OfferPage
 
 Create the OffersPage as a new Dart file, and create a Stateless Widget. 
 

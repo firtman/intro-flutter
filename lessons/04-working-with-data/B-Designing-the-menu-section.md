@@ -1,6 +1,6 @@
 Create a MenuItem.dart file with a `MenuItem` stateless widget that will serve as a product preview first.
 
-## ProductItem (Dummy)
+###ProductItem (Dummy)
 
 ```dart
 class MenuItem extends StatelessWidget {

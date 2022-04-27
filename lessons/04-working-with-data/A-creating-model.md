@@ -1,6 +1,6 @@
 It's time to start working with data. Let's create a Model file called DataModel.dart with the following basic  classes
 
-## DataModel
+###DataModel
 
 ```dart
 class Product {
