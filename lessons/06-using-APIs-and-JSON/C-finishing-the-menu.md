@@ -1,6 +1,6 @@
 Now it's time to finish the menu so it can use dynamic data. We will start by changing the ProductItem so it can render the image from a URL
 
-##ProductItem
+## ProductItem
 
 ```dart
 class MenuItem extends StatelessWidget {
@@ -49,7 +49,7 @@ class MenuItem extends StatelessWidget {
 }
 ```
 
-##MenuPage
+## MenuPage
 
 Then we redeign our MenuPage to loop through all the categories with a `ListView.builder` and within it we use a `for-in` to make other loop within their products. We also capture the `onAdd` event we defined as an argument in `ProductItem` and we add it to the cart.
 

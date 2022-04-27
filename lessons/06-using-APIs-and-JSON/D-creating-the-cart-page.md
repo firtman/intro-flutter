@@ -1,7 +1,7 @@
 Finally, we have to update our `OrderPage` so it can render its content. We will start by creating a simple view for when the cart is empty, then the CartItem that we will repeat for every item, and the `ListView` that will render all its contents.
 
 
-##OrderItem
+## OrderItem
 
 ```dart
 class OrderItem extends StatelessWidget {
@@ -51,7 +51,7 @@ class OrderItem extends StatelessWidget {
 }
 ```
 
-##OrderPage
+## OrderPage
 
 We will need to convert the Stateless widget into a Stateful widget because the list will be updated every time we delete one item
 

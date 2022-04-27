@@ -42,7 +42,7 @@ class DataManager {
 
 ```
 
-##Using the Data Manager
+## Using the Data Manager
 
 We will create an instance of the DataManager at the App level in `HomePage` and pass it to final properties to the `MenuPage` and `OrderPage` that will need it.
 

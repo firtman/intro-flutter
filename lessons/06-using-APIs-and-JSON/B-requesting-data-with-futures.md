@@ -1,6 +1,6 @@
 Dart doesn't map automatically JSON values into classes, so we have to do it manually. We will add some factory methods in `DataModel.dart` for our Product and Category classes as:
 
-##Data Model to the rescue
+## Data Model to the rescue
 ```dart
 
   // Add this in class Product
@@ -22,7 +22,7 @@ Dart doesn't map automatically JSON values into classes, so we have to do it man
   
 ```
 
-##Using Futures to get the network response and parse JSON
+## Using Futures to get the network response and parse JSON
 
 In DataManager.dart add the following methods
 
