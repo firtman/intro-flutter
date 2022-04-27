@@ -1,6 +1,6 @@
 ## Slides from the Workshop
 
-[Download the PDF version](intro-flutter/slides.pdf)
+[Download the PDF version](/intro-flutter/slides.pdf)
 
 ## Dart Language guide
 
