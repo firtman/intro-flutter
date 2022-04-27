@@ -1,36 +1,4 @@
-We need to render an `AndroidView` to connect classic Android UI controls with a composable, such as Webview. 
+Our app is ready so we can publish it as a Progressive Web App.
 
-## WebView composable
-
-```kotlin
-@Composable
-fun WebView() {
-    // Declare a string that contains a url
-    val url = "https://firtman.github.io/coffeemasters/webapp"
-
-    // Adding a WebView inside AndroidView
-    // with layout as full screen
-    AndroidView(factory = {
-        WebView(it).apply {
-            layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
-            webViewClient = WebViewClient()
-            loadUrl(url)
-        }
-    }, update = {
-        it.loadUrl(url)
-    })
-}
-```
-
-## InfoPage
-Now we just use it in `InfoPage`
-
-```kotlin
-@Composable
-fun InfoPage() {
-    WebView()
-}
-```
+It's as simple as running `flutter build web` and publishing the `\build\web` output folder. You may want to edit the `index.html` and customize it to your needs, such as changing meta data, `<title>`, favicons and PWA `manifest.json`. See [Learn PWA!](https://web.dev/learn/pwa) for more details and insights about Progressive Web Apps; it's a free interactive ebook that I published on this topic :) Also, you have great PWA courses at Frontend Masters, including my workshop [Build Progressive Web Apps (PWAs) from Scratch
+](https://frontendmasters.com/courses/pwas/)
