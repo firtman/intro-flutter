@@ -1,88 +1,56 @@
-With these libraries, fetching the data and parsing it is simple. But we have to find a solution to do this within composables. A composable should not have side effects inside, or should not be responsible for doing things like fetching data, so we will change our DataManager to conform to an Android architectural pattern: ViewModel.
+Dart doesn't map automatically JSON values into classes, so we have to do it manually. We will add some factory methods in `DataModel.dart` for our Product and Category classes as:
 
-## Creating API.kt
+# Data Model to the rescue
+```dart
 
-```kotlin
-interface CoffeeMastersApiService {
-    @GET("menu.json")
-    suspend fun fetchMenu(): List<Category>
-}
+  // Add this in class Product
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+        id: json['id'] as int,
+        name: json['name'] as String,
+        price: json['price'] as double,
+        image: json['image'] as String);
+  }
 
-object API {
-    private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://firtman.github.io/coffeemasters/api/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+  // Add this in class Category
+  factory Category.fromJson(Map<String, dynamic> json) {
+    var productsJson = json['products'] as Iterable<dynamic>;
+    var products = productsJson.map((p) => Product.fromJson(p)).toList();
+    return Category(name: json['name'] as String, products: products);
+  }
 
-    val menuService: CoffeeMastersApiService by lazy {
-        retrofit.create(CoffeeMastersApiService::class.java)
-    }
-}
+  
 ```
 
+# Using Futures to get the network response and parse JSON
 
-## Change the signature of DataManager
+In DataManager.dart add the following methods
 
-```kotlin
-class DataManager(app: Application) : AndroidViewModel(app)
-```
+```dart
+fetchMenu() async {
+    try {
+      const url = 'https://firtman.github.io/coffeemasters/api/menu.json';
+      var response = await http.get(Uri.parse(url));
 
-## Add the fetchData method
-
-```kotlin
-    private fun fetchData() {
-        try {
-            viewModelScope.launch {
-                menu = API.menuService.fetchMenu()
-            }
-        } catch (ex: Exception) {
-            //TODO: create other state variable for error 
+      if (response.statusCode == 200) {
+        _menu = [];
+        var decodedData = jsonDecode(response.body) as List<dynamic>;
+        for (var json in decodedData) {
+          _menu?.add(Category.fromJson(json));
         }
+      } else {
+        throw Exception("Error loading data");
+      }
+    } catch (e) {
+      throw Exception("Error loading data");
     }
+  }
 
-    init {
-        fetchData()
+    Future<List<Category>> getMenu() async {
+    if (_menu == null) {
+      await fetchMenu();
     }
+    return _menu!;
+  }
 ```
 
-## Create and Connect the DataManager in the App
-
-```kotlin
-// In the Activity
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    var dataManager = ViewModelProvider(this).get(DataManager::class.java)
-
-    setContent {
-        CoffeMastersDemoTheme {
-            // A surface container using the 'background' color from the theme
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colors.background
-            ) {
-                App(dataManager)
-            }
-        }
-    }
-}
-```
-
-Receive the Data Manager in `App`, `MenuPage` and `OrderPage`
-```kotlin
-fun App(dataManager: DataManager)
-
-fun MenuPage(dataManager: DataManager)
-
-fun OrderPage(dataManager: DataManager)
-```
-
-Pass the object from App
-
-```kotlin
- when (selectedRoute.value) {
-    Routes.MenuPage.route -> MenuPage(dataManager)
-    Routes.OffersPage.route -> OffersPage()
-    Routes.OrderPage.route -> OrderPage(dataManager)
-    Routes.InfoPage.route -> InfoPage()
-}
-```

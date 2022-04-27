@@ -1,15 +1,36 @@
-It's time to start working with data. Let's create a Model file called DataModel.kt with the following basic data classes
+It's time to start working with data. Let's create a Model file called DataModel.dart with the following basic  classes
 
-## Product.kt
+## DataModel
 
-```kotlin
-class Product(var id: Int, var name: String, var price: Double, var image: String) {
-    val imageUrl get() = "https://firtman.github.io/coffeemasters/api/images/${this.image}"
+```dart
+class Product {
+  int id;
+  String name;
+  double price;
+  String image;
 
+  String get imageUrl =>
+      "https://firtman.github.io/coffeemasters/api/images/$image";
+
+  Product(
+      {required this.id,
+      required this.name,
+      required this.price,
+      required this.image});
 }
 
-class Category(var name: String, var products: MutableList<Product>)
+class Category {
+  String name;
+  List<Product> products;
 
-class ItemInCart(var product: Product, var quantity: Int)
+  Category({required this.name, required this.products});
+}
+
+class ItemInCart {
+  Product product;
+  int quantity;
+
+  ItemInCart({required this.product, required this.quantity});
+}
 
 ```

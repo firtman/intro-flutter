@@ -37,33 +37,25 @@ BottomNavigationBar(
 ),
 ```
 
-Now we need to save the state in a state variable 
+Now we need to save the state in a state variable at HomePage
 
 ```dart
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
+  DataManager dataManager = DataManager();
 
   @override
   Widget build(BuildContext context) {
-    Widget currentPage;
+    late Widget currentPage;
     switch (_currentIndex) {
       case 0:
-        currentPage = const Text("Menu");
+        currentPage = MenuPage(dataManager: dataManager);
         break;
       case 1:
-        currentPage = OffersPage();
+        currentPage = const OffersPage();
         break;
       case 2:
-        currentPage = const Text("Your Order");
+        currentPage = OrderPage(dataManager: dataManager);
         break;
     }
 
@@ -101,3 +93,5 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 ```
+
+Now create a `pages/` folder, move `OffersPage.dart` there and create two empty Widgets in new files for `MenuPage` and `OrderPage`.

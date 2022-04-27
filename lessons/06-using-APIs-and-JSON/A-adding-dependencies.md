@@ -1,17 +1,19 @@
-It's time to call our web service using HTTP(s). Unfortunately, Android SDK doesn't include an easy way to fetch HTTP content, so we will need to use libraries.
+It's time to call our web service using HTTP(s). Flutter includes an HTTP and JSON parser, the only thing we need is to add the dependency in `pubspec.yaml`:
 
-We will use RetroFit, OkHttp and JsonConverter. Also, we will use AsyncImage from Coil to download images from the web. To add dependencies, open `build.grade (module)` in Android Studio and within `dependencies`, add the following lines
-
-```
-// Retrofit
-implementation 'com.squareup.retrofit2:retrofit:2.7.1'
-// OkHttp
-implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
-// JSON Converter
-implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
-
-// AsyncImage
-implementation("io.coil-kt:coil-compose:2.0.0-rc03")
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  http:
 ```
 
-In the top of this file there is a warning line asking you to sync the project. Do that, so these libraries will be ready to use.
+Now we are ready to use HTTP services. Warning for Android development: you have to add INTERNET permission to the Android app to make it work. For that you need to find `AndroidManifest.xml` in the `android/app/src/main` folder and add as a new children of the root element
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.coffee_masters">
+    <uses-permission android:name="android.permission.INTERNET" />
+<!-- ... -->
+```
+
+Web and iOS targets have access to Internet without any explicit permission request.
