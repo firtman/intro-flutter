@@ -19,7 +19,7 @@ This is a course to start with Dart and Flutter development to create apps for A
 ## Companion websites
 
 * [API and Webapp used in the app](https://firtman.github.io/coffeemasters/)
-* [Android Studio source code repository](https://github.com/firtman/coffeemasters-flutter)
+* [Android Studio source code repository](https://github.com/firtman/coffeemaster-flutter)
 
 [twitter]: https://twitter.com/firt
 [fem]: https://www.frontendmasters.com
