@@ -1,7 +1,7 @@
 <h1 align="center">Introduction to Flutter</h1> <br>
 
 <p align="center">
-  This is the companion documentation site for the [Introduction to Flutter workshop](https://frontendmasters.com/courses/flutter/). 
+  This is the companion documentation site for the Introduction to Flutter workshop (https://frontendmasters.com/courses/flutter/). 
 </p>
 
 ## See it online
